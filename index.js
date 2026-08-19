@@ -3,7 +3,7 @@ const client = new Kahoot();
 
 // Replace with the active Kahoot Game PIN you want to connect to
 const GAME_PIN = 123456; 
-const BOT_NAME = 'TestBot_Node';
+const BOT_NAME = 'TestBot_Random';
 
 console.log(`Attempting to join session ${GAME_PIN}...`);
 
@@ -24,10 +24,13 @@ client.on('quizUpdate', (question) => {
     console.log(`Time Allowed: ${question.timeLeft} seconds`);
     console.log(`Number of Choices: ${question.numberOfChoices}`);
     
-    // Example: Automatically select the first answer choice (Index 0) after a 2-second delay
+    // Calculate a completely random answer index based on available choices
+    const randomChoice = Math.floor(Math.random() * question.numberOfChoices);
+
+    // Automatically select the random answer choice after a 2-second delay
     setTimeout(() => {
-        console.log('Sending answer choice: 0');
-        question.answer(0).catch(err => {
+        console.log(`Sending randomized answer choice: ${randomChoice}`);
+        question.answer(randomChoice).catch(err => {
             console.error('Error sending answer:', err.message);
         });
     }, 2000);
