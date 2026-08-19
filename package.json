@@ -1,0 +1,9 @@
+{
+  "name": "kahoot-automation",
+  "version": "1.0.0",
+  "description": "Automated Kahoot testing script",
+  "main": "index.js",
+  "dependencies": {
+    "kahoot.js-updated": "^2.4.4"
+  }
+}
